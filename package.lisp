@@ -1,7 +1,7 @@
 (in-package :cl-user)
 
 (defpackage :zip
-  (:use :cl #-allegro :trivial-gray-streams)
+  (:use :cl :trivial-gray-streams)
   (:export #:zipfile                    ;reading ZIP files
 	   #:open-zipfile
 	   #:close-zipfile

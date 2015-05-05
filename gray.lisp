@@ -1,26 +1,5 @@
 (in-package :zip)
 
-(defun default-external-format ()
-  :utf-8)
-
-(defun octets-to-string (octets ef)
-  (with-output-to-string (out)
-    (flexi-streams:with-input-from-sequence (in octets)
-      (let ((in* (flexi-streams:make-flexi-stream in :external-format ef)))
-	(loop
-	    for c = (read-char in* nil nil)
-	    while c
-	    do (write-char c out))))))
-
-(defun string-to-octets (string ef)
-  (flexi-streams:with-output-to-sequence (out)
-    (with-input-from-string (in string)
-      (let ((out* (flexi-streams:make-flexi-stream out :external-format ef)))
-	(loop
-	    for c = (read-char in nil nil)
-	    while c
-	    do (write-char c out*))))))
-
 (defclass buffer-output-stream
     (trivial-gray-stream-mixin fundamental-binary-output-stream)
     ((buf :initarg :buf :accessor buf)

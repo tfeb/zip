@@ -11,11 +11,9 @@
 
 (defsystem :zip
     :default-component-class silent-source-file
-    :depends-on (:salza2 :trivial-gray-streams :flexi-streams)
+    :depends-on (:salza2 :trivial-gray-streams :babel :cl-fad)
     :components ((:file "package")
-		 (:file dependent
-			:pathname #+allegro #p"acl.lisp" #-allegro #p"gray.lisp"
-			:depends-on ("package"))
+		 (:file "gray" :depends-on ("package"))
 		 (:file "ifstar" :depends-on ("package"))
 		 (:file "inflate" :depends-on ("package" "ifstar"))
-		 (:file "zip" :depends-on ("inflate" dependent))))
+		 (:file "zip" :depends-on ("inflate" "gray"))))
