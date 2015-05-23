@@ -45,7 +45,8 @@
     </p>
     <p>
       Thanks to <a href="http://common-lisp.net">common-lisp.net</a> for
-      hosting.
+      web site and mailing list hosting.  Please note the repository
+      on <a href="https://github.com/bluelisp/zip">github</a>.
     </p>
     <p>
       Uses <a href="http://www.xach.com/lisp/salza2/">salza2</a> for
@@ -60,12 +61,21 @@
 
     <h2>Recent changes</h2>
     <p>
-      2006-xx-yy: Fixed the gray stream port, including a data
-      corruption bug that was in CVS for some time.  (Thanks to Kevin
-      Reid and others.)  Switched to flexi-stream external-format
-      functions for portability.  Uses trivial-gray-streams now.
-      Allegro 8.0 fix (thanks to Edi Weitz).  Comment support (thanks
-      to Surendra Singhi).  Incompatible change: Don't bind
+      2015: Move to github, and backport of changes from downstream fork
+      (Thanks to Tomas Hlavaty.)
+    <p>
+    <p>
+      2006 -- 2011: During this time a fork occurred.  The
+      common-lisp.net version of the library received little attention,
+      except that it was ported to ASDF2.  (Thanks to Faré Rideau.)
+    <p>
+    <p>
+      2006: Fixed the gray stream port, including a data corruption bug
+      that was in CVS for some time.  (Thanks to Kevin Reid and others.)
+      Switched to flexi-stream external-format functions for
+      portability.  Uses trivial-gray-streams now.  Allegro 8.0 fix
+      (thanks to Edi Weitz).  Comment support (thanks to Surendra
+      Singhi).  Incompatible change: Don't bind
       <tt>*locale*</tt> on Allegro anymore.
     <p>
     </p>
@@ -76,29 +86,22 @@
 
     <h2>Download</h2>
     <ul>
-      <li>asdf-install: <pre>(asdf-install:install :zip)</pre></li>
-      <li>Anoncvs (<a href="http://common-lisp.net/cgi-bin/viewcvs.cgi/zip/?cvsroot=zip">browse</a>):
-        <pre>$ export CVSROOT=:pserver:anonymous@common-lisp.net:/project/zip/cvsroot
-$ cvs login
-Logging in to :pserver:anonymous@common-lisp.net:2401/project/zip/cvsroot
-CVS password: anonymous
-$ cvs co zip</pre>
-      </li>
-      <li><a href="http://common-lisp.net/project/zip/zip.tgz">Tarball</a></li>
+      <li>Using Quicklisp (if in doubt,
+	this is a good way to get started):<br/>
+	<pre>(ql:quickload :zip)</pre></li>
+      <li>From github: <pre>git clone https://github.com/bluelisp/zip</pre></li>
+      <li>Using clbuild2 from github: <pre>clbuild install-from-upstream zip</pre> &#45;&#45; For the one or two clbuild users out there</li>
+      <li>Using clbuild2 via QuickLisp: <pre>clbuild quickload zip</pre> &#45;&#45; Ditto</li>
+      <li>Tarball releases &#45;&#45; Unfortunately we are not currently offering a release tarball for download.</li>
     </ul>
-    <p>Installation (without asdf-install):</p>
-    <pre>$ ln -s `pwd`/zip.asd /your/system/directory
-* (asdf:operate 'asdf:load-op :zip)</pre>
 
     <h2>Portability</h2>
     <p>
-      Needs gray streams.  Currently works out-of-the-box on SBCL,
-      Lispworks, and ACL.  Should be trivial to port to other Lisps.
-    </p>
-    <p>
-      Handles Unicode characters in filenames on ACL and Lispworks
-      (within the zip-file), is waiting for someone to fix Unicode
-      handling on SBCL.
+      Needs gray streams.  The original version had separate support
+      out-of-the-box on SBCL, Lispworks, and ACL.  The fork briefly
+      introduced some features specific to simple-stream / ACL.  We
+      believe the library to currently be portable to most popular
+      Common Lisp implementations, but patches are welcome.
     </p>
 
     <h2>ZIP-file reading</h2>
