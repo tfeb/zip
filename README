@@ -2,13 +2,14 @@
 
    A library for .zip-file reading and writing, written in Common Lisp.
 
-   Written by David Lichteblau <david@lichteblau.com>.
+   Credits: David Lichteblau, Tomas Hlavaty. Thanks to everyone who has
+   contributed patches.
 
    Send bug reports to [1]<zip-devel@common-lisp.net> ([2]list
    information).
 
-   Thanks to [3]common-lisp.net for web site hosting. Please note the
-   repository on [4]github.
+   Thanks to [3]common-lisp.net for web site and mailing list hosting.
+   Please note the repository on [4]github.
 
    Uses [5]salza2 for compression, [6]flexi-streams for external format
    support, [7]trivial-gray-streams for gray streams portability, and
